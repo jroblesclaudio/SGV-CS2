@@ -40,9 +40,10 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="@Url.Action("index","DashBoard")">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
+                    <span>Dashboard</span>
+                </a>
             </li>
 
             <!-- Nav Item - Administración Collapse Menu -->
@@ -53,8 +54,8 @@
                 </a>
                 <div id="collapseAdministracion" class="collapse" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="usuarios.html">Usuarios</a>
-                        <a class="collapse-item" href="negocio.html">Negocio</a>
+                        <a class="collapse-item" href="@Url.Action("Index","Usuario")">Usuarios</a>
+                        <a class="collapse-item" href="@Url.Action("Index","Negocio")">Negocio</a>
                     </div>
                 </div>
             </li>
@@ -67,8 +68,8 @@
                 </a>
                 <div id="collapseInventario" class="collapse" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="categorias.html">Categorias</a>
-                        <a class="collapse-item" href="productos.html">Productos</a>
+                        <a class="collapse-item" href="@Url.Action("Index","Categoria")">Categorias</a>
+                        <a class="collapse-item" href="@Url.Action("Index","Producto")">Productos</a>
                     </div>
                 </div>
             </li>
@@ -81,8 +82,8 @@
                 </a>
                 <div id="collapseVenta" class="collapse" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="nueva_venta.html">Nueva Venta</a>
-                        <a class="collapse-item" href="historial_venta.html">Historial Venta</a>
+                        <a class="collapse-item" href="@Url.Action("NuevaVenta","Venta")">Nueva Venta</a>
+                        <a class="collapse-item" href="@Url.Action("HistorialVenta","Venta")">Historial Venta</a>
                     </div>
                 </div>
             </li>
@@ -95,7 +96,7 @@
                 </a>
                 <div id="collapseReportes" class="collapse" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="reporte_venta.html">Reporte de Ventas</a>
+                        <a class="collapse-item" href="@Url.Action("Index","Reporte")">Reporte de Ventas</a>
                     </div>
                 </div>
             </li>
@@ -139,7 +140,7 @@
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="perfil.html">
+                                <a class="dropdown-item" href="@Url.Action("Perfil","Home")">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Perfil
                                 </a>
@@ -169,7 +170,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span>Copyright &copy; Your Website 2023</span>
                     </div>
                 </div>
             </footer>

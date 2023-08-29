@@ -3,7 +3,19 @@ con id page y se aplicará el estilo active al sol*/
 const sun = document.getElementById('id-sun');
 const moon = document.getElementById('id-moon');
 
+// Guardar un valor en el localStorage
+const key = 'darkMode';  // Clave bajo la cual se almacenará el valor
+const value = 'true';    // Valor que se almacenará
 
+document.addEventListener('DOMContentLoaded', function () {
+    const isDarkMode = localStorage.getItem('darkMode') === 'true';
+    if (isDarkMode) {
+        document.getElementById('wrapper').classList.add('dark-mode');
+        moon.classList.add('active');
+    } else {
+        sun.classList.add('active');
+    }
+});
 
 sun.onclick = function () {
     localStorage.removeItem(key, value);

@@ -10,7 +10,7 @@ using System.Linq.Expressions;
 
 namespace SistemaVenta.DAL.Interfaces
 {
-    internal interface IGenericRepository <TEntity> where TEntity : class
+    public interface IGenericRepository <TEntity> where TEntity : class
     {
         Task<TEntity> Obtener(Expression<Func<TEntity, bool>> filtro);
 

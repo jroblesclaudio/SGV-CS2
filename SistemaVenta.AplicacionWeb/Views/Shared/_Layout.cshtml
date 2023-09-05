@@ -17,6 +17,9 @@
     <link href="~/css/sb-admin-2.css" rel="stylesheet">
     <link href="~/vendor/toastr/toastr.min.css" rel="stylesheet">
     <link href="~/vendor/sweetalert/sweetalert.css" rel="stylesheet">
+    <link href="~/css/modeDark.css" rel="stylesheet">
+    <link href="~/css/internationalization.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
     @await RenderSectionAsync("Estilos", required: false)
 </head>
 <body id="page-top">
@@ -64,7 +67,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseInventario">
                     <i class="fas fa-fw fa-clipboard-list"></i>
-                    <span>Inventario</span>
+                    <span id="invent">Inventario</span>
                 </a>
                 <div id="collapseInventario" class="collapse" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
@@ -118,7 +121,14 @@
 
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
+                    <div class="container-btn-mode">
+                        <div id="id-sun" class="btn-mode sun active">
+                            <i class="fas fa-sun"></i>
+                        </div>
+                        <div id="id-moon" class="btn-mode moon">
+                            <i class="fas fa-moon"></i>
+                        </div>
+                    </div>
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
@@ -126,6 +136,12 @@
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
+                        <!--internationalization button-->
+                        <label class="container">
+                            <input type="checkbox" id="idCheckbox">
+                            <div class="checkmark"></div>
+                            <div class="traslate">es - eu</div>
+                        </label>
 
                         <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -194,6 +210,8 @@
     <script src="~/vendor/toastr/toastr.min.js"></script>
     <script src="~/vendor/sweetalert/sweetalert.js"></script>
     <script src="~/vendor/loadingoverlay/loadingoverlay.min.js"></script>
+    <script src="~/js/modeDark.js"></script>
+    <script src="~/js/traslate.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

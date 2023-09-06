@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace SistemaVenta.BLL.Interfaces
 {
-    internal interface ICorreoService
+    public interface ICorreoService
     {
+        Task<bool> EnviarCorreo(string CorreoDestino, string Asunto, string Mensaje);
     }
 }

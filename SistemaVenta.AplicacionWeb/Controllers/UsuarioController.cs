@@ -32,19 +32,17 @@ namespace SistemaVenta.AplicacionWeb.Controllers
         [HttpGet]
         public async Task<IActionResult> ListaRoles()
         {
-            var listaRol = await _rolService.Lista();
-            List<VMRol> vmListaRoles = _mapper.Map<List<VMRol>>(listaRol);
+            List<VMRol> vmListaRoles = _mapper.Map<List<VMRol>>(await _rolService.Lista());
 
             return StatusCode(StatusCodes.Status200OK, vmListaRoles);
         }
 
         [HttpGet]
-        public async Task<IActionResult> ListaUsuarios()
+        public async Task<IActionResult> Lista()
         {
-            var listaUsuario = await _usuarioService.Lista();
-            List<VMUsuario> vmListaUsuario = _mapper.Map<List<VMUsuario>>(listaUsuario);
+            List<VMUsuario> vmUsuarioLista = _mapper.Map<List<VMUsuario>>(await _usuarioService.Lista());
 
-            return StatusCode(StatusCodes.Status200OK, new { data = vmListaUsuario });
+            return StatusCode(StatusCodes.Status200OK, new { data = vmUsuarioLista });
         }
 
         [HttpPost]

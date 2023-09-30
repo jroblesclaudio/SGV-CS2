@@ -45,9 +45,9 @@ namespace SistemaVenta.AplicacionWeb.Controllers
         [HttpGet]
         public async Task<IActionResult> ObtenerProductos(string busqueda)
         {
-            List<VMProducto> vmListaProduto = _Mapper.Map<List<VMProducto>>(await _VentaService.ObtenerProductos(busqueda));
+            List<VMProducto> vmListaProducto = _Mapper.Map<List<VMProducto>>(await _VentaService.ObtenerProductos(busqueda));
 
-            return StatusCode(StatusCodes.Status200OK, vmListaProduto);
+            return StatusCode(StatusCodes.Status200OK, vmListaProducto);
         }
 
         [HttpPost]

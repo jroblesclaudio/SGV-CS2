@@ -1,6 +1,6 @@
 ﻿
 
-let valorImpuesto = 0;
+let ValorImpuesto = 0;
 $(document).ready(function () {
 
 
@@ -31,7 +31,7 @@ $(document).ready(function () {
                 $("#inputGroupIGV").text(`IGV(${d.porcentajeImpuesto}) - ${d.simboloMoneda}`)
                 $("#inputGroupTotal").text(`Total - ${d.simboloMoneda}`)
 
-                valorImpuesto = parseFloat(d.porcentajeImpuesto)
+                ValorImpuesto = parseFloat(d.porcentajeImpuesto)
             }
         })
 
@@ -102,23 +102,24 @@ $(document).on("select2:open", function () {
     document.querySelector(".select2-search__field").focus();
 })
 
-let productosParaVenta = [];
+let ProductosParaVenta = [];
 
 $("#cboBuscarProducto").on("select2:select", function (e) {
     const data = e.params.data;
 
-    let productoEncontrado = productosParaVenta.filter(p => p.idProducto == data.id)
+    let producto_encontrado = ProductosParaVenta.filter(p => p.idProducto == data.id)
 
-    if (productoEncontrado.length > 0) {
+    if (producto_encontrado.length > 0) {
         $("#cboBuscarProducto").val("").trigger("change")
         toastr.warning("", "El producto ya fue agregado")
 
-        return false;
+        return false
     }
 
     swal({
         title: data.marca,
-        text: `${data.text} -> Stock= ${data.stock}`,
+        text: data.text,
+        //text: `${data.text} -> Stock= ${data.stock}`,
         imageUrl: data.urlImagen,
         type: "input",
         showCancelButton: true,
@@ -148,9 +149,9 @@ $("#cboBuscarProducto").on("select2:select", function (e) {
                 total: (parseFloat(valor) * data.precio).toString()
             }
 
-            productosParaVenta.push(producto)
+            ProductosParaVenta.push(producto)
 
-            mostrarProducto_precios();
+            mostrarProducto_Precios();
             $("#cboBuscarProducto").val("").trigger("change")
             swal.close()
         }
@@ -158,7 +159,7 @@ $("#cboBuscarProducto").on("select2:select", function (e) {
 
 })
 
-function mostrarProducto_precios() {
+function mostrarProducto_Precios() {
     let total = 0;
     let igv = 0;
     let subTotal = 0;
@@ -166,7 +167,7 @@ function mostrarProducto_precios() {
 
     $("#tbProducto tbody").html("")
 
-    productosParaVenta.forEach((item) => {
+    ProductosParaVenta.forEach((item) => {
 
         total = total + parseFloat(item.total)
 
@@ -196,20 +197,21 @@ function mostrarProducto_precios() {
 }
 
 $(document).on("click", "button.btn-eliminar", function () {
-    const _idProducto = $(this).data("idProducto")
+    const _idproducto = $(this).data("idProducto")
 
-    productosParaVenta = productosParaVenta.filter(p => p.idProducto != _idProducto);
+    ProductosParaVenta = ProductosParaVenta.filter(p => p.idProducto != _idproducto);
 
-    mostrarProducto_precios();
+    mostrarProducto_Precios();
 })
 
 $("#btnTerminarVenta").click(function () {
-    if (productosParaVenta.length < 1) {
+    
+    if (ProductosParaVenta.length < 1) {
         toastr.warning("", "Debe ingresar productos")
         return;
     }
 
-    const vmDetalleVenta = productosParaVenta;
+    const vmDetalleVenta = ProductosParaVenta;
 
     const venta = {
         idTipoDocumentoVenta: $("#cboTipoDocumentoVenta").val(),
@@ -222,7 +224,7 @@ $("#btnTerminarVenta").click(function () {
 
     }
     $("#btnTerminarVenta").LoadingOverlay("show");
-
+    //debugger;
     fetch("/Venta/RegistrarVenta", {
         method: "POST",
         headers: { "Content-Type": "application/json; charset=utf-8" },
@@ -235,8 +237,8 @@ $("#btnTerminarVenta").click(function () {
         .then(responseJson => {
 
             if (responseJson.estado) {
-                productosParaVenta = [];
-                mostrarProducto_precios();
+                ProductosParaVenta = [];
+                mostrarProducto_Precios();
 
                 $("#txtDocumentoCliente").val("")
                 $("#txtNombreCliente").val("")
